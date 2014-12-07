@@ -1,6 +1,7 @@
 # jQuery LSR-Filter
 
-A jQuery-Plugin to perform actions on links to the knights of the stupid german law called "Leistungsschutzrecht für Presseverlage". [Learn more](https://github.com/magdev/leistungsschutzgelderpresser/blob/master/README.md)
+A jQuery-Plugin to perform actions on links to the knights of the stupid german law called "Leistungsschutzrecht 
+für Presseverlage". [Learn more](https://github.com/magdev/leistungsschutzgelderpresser/blob/master/README.md)
 
 
 
@@ -113,13 +114,15 @@ $('.container').lsr({
 
 ## Examples
 
-Download the package, unpack and open [example/usage.html](example/usage.html) for default options and [example/custom.html](example/custom.html) in a browser.
+Download the package, unpack and open [example/usage.html](example/usage.html) for default options and 
+[example/custom.html](example/custom.html) in a browser.
 
 
 
 ## To-Do
 
   * Automated tests
+  * Apply styles to examples
 
 
 
