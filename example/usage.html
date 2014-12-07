@@ -130,7 +130,7 @@ $('.container6 a').lsr({
                 </div>
                 <p><em>Only one paragraph should be left above</em></p>
             </li>
-            <li>
+            <!--li>
                <h2>Use a custom modifier function</h2>
                <code>
                    <pre>
@@ -148,11 +148,25 @@ $('.container7').lsr({
                    <p>This paragraph contains a link to <a href="http://www.bild.de">Bild.de</a></p>
                    <p>This is just another paragraph.</p>
                 </div>
+            </li-->
+            <li>
+               <h2>Confirm the click</h2>
+               <code>
+                   <pre>
+$('.container8').lsr({
+    filterMode: 'confirm'
+});
+                   </pre>
+               </code>
+                <div class="container container7">
+                   <p>This paragraph contains a link to <a href="http://www.bild.de">Bild.de</a></p>
+                   <p>This is just another paragraph.</p>
+                </div>
             </li>
         </ul>
        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="../dist/jquery.lsr.min.js"></script>
+        <script src="../src/jquery.lsr.js"></script>
         <script>
         $('.container1').lsr({
             filterMode: 'unlink'
@@ -177,12 +191,7 @@ $('.container7').lsr({
             parentSelector: 'p'
         });
         $('.container7').lsr({
-            onFilterMatch: function($el, $parent, url, domain) {
-                $el.click(function(ev) {
-                    ev.preventDefault();
-                    alert('You really shouln\'t read this crap!');
-                });
-            }
+            filterMode: 'confirm'
         });
         </script>
     </body>
