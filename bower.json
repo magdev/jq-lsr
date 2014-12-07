@@ -21,9 +21,10 @@
         "node_modules",
         "bower_components",
         "test",
-        "tests"
+        "tests",
+        "*.md"
     ],
     "dependencies":{
-        "jquery":"~1.9.x"
+        "jquery":"~2.x"
     }
 }
