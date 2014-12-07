@@ -37,20 +37,20 @@
          * Predefined filters
          */
         filters = {
-            unlink: function($el, $parent, url, domain) { 
+            unlink: function($el, $parent, url, domain) {
                 if ($parent && $parent.length && !$parent.hasClass(parentClass)) {
                     $parent.addClass(parentClass);
                 }
                 var $span = $('<span title="Link removed"></span>').text($el.text());
                 $span.addClass(elementClass);
-                $el.replaceWith($span); 
+                $el.replaceWith($span);
             },
-            remove: function($el, $parent, url, domain) { 
+            remove: function($el, $parent, url, domain) {
                 if ($parent && $parent.length) {
                     $parent.replaceWith('');
                     return;
                 }
-                $el.replaceWith(''); 
+                $el.replaceWith('');
             },
             marker: function($el, $parent, url, domain) {
                 if ($parent && $parent.length && !$parent.hasClass(parentClass)) {
