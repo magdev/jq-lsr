@@ -2,6 +2,8 @@
     'use strict';
         
     var filterMode = 'unlink',
+        elementClass = 'lsr-link',
+        parentClass = 'lsr-link-parent',
         domainlist = (JSON.parse(localStorage.getItem('domainlist')) || []),
         
         
@@ -9,15 +11,28 @@
          * Predefined filters
          */
         filters = {
-            unlink: function($el, $parent) { 
-                $el.replaceWith($el.text()); 
+            unlink: function($el, $parent, url, domain) { 
+                if ($parent && $parent.length && !$parent.hasClass(parentClass)) {
+                    $parent.addClass(parentClass);
+                }
+                var $span = $('<span title="Link removed"></span>').text($el.text());
+                $span.addClass(elementClass);
+                $el.replaceWith($span); 
             },
-            remove: function($el, $parent) { 
+            remove: function($el, $parent, url, domain) { 
                 if ($parent && $parent.length) {
                     $parent.replaceWith('');
                     return;
                 }
                 $el.replaceWith(''); 
+            },
+            marker: function($el, $parent, url, domain) {
+                if ($parent && $parent.length && !$parent.hasClass(parentClass)) {
+                    $parent.addClass(parentClass);
+                }
+                if (!$el.hasClass(elementClass)) {
+                    $el.addClass(elementClass);
+                }
             }
         },
         
@@ -134,7 +149,7 @@
          */
         onFilterMatch = function($el, $parent, url, domain) {
             if (filters[filterMode]) {
-                filters[filterMode]($el, $parent);
+                filters[filterMode]($el, $parent, url, domain);
             }
         },
         
@@ -145,11 +160,13 @@
         defaultOptions = {
             domainlist: 'https://cdn.rawgit.com/magdev/leistungsschutzgelderpresser/master/domains.json',
             updateInterval: 'weekly',
+            forceUpdate: false,
             onFilterMatch: onFilterMatch,
             onUpdateList: onUpdateList,
-            forceUpdate: false,
             filterMode: 'unlink',
-            parentSelector: null
+            parentSelector: null,
+            elementClass: 'lsr-link',
+            parentClass: 'lsr-link-parent'
         };
     
     
@@ -160,13 +177,15 @@
      * @return {jQuery}
      */
     $.fn.lsr = function(options) {
-        
         var opts = $.extend(defaultOptions, options);
-        filterMode = opts.filterMode;
         
         if (checkUpdates(opts.updateInterval) || opts.forceUpdate) {
             updateList(opts.domainlist, opts.onUpdateList);
         }
+        
+        filterMode = opts.filterMode;
+        elementClass = opts.elementClass;
+        parentClass = opts.parentClass;
         
         return this.each(function() {
             var $this = $(this),
