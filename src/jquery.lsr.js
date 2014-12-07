@@ -109,7 +109,6 @@
                 case 'weekly':
                     intervalTime = (60*60*24*7);
                     break;
-                    break;
                     
                 case 'monthly':
                     intervalTime = (60*60*24*30);
