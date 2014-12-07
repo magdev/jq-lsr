@@ -1,6 +1,6 @@
 # jQuery LSR-Filter
 
-A jQuery-Plugin to perform actions on links to the knights of the stupid german law called "Leistungsschutzrecht für Presseverlage". [Learn more](https://github.com/magdev/leistungsschutzgelderpresser)
+A jQuery-Plugin to perform actions on links to the knights of the stupid german law called "Leistungsschutzrecht für Presseverlage". [Learn more](https://github.com/magdev/leistungsschutzgelderpresser/blob/master/README.md)
 
 
 
