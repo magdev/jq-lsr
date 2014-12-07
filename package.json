@@ -1,0 +1,28 @@
+{
+    "name":"jq-lsr",
+    "version":"0.0.1",
+    "description":"A jQuery-Plugin to perform actions on links to the knights of the stupid german law called \"Leistungsschutzrecht für Presseverlage\".",
+    "main":"src/jquery.lsr.js",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/magdev/jq-lsr"
+    },
+    "keywords":[
+        "jquery",
+        "lsr",
+        "leistungsschutzrecht"
+    ],
+    "author":"magdev <magdev3.0@gmail.com>",
+    "license":"MIT",
+    "bugs":{
+        "url":"https://github.com/magdev/jq-lsr/issues"
+    },
+    "devDependencies":{
+        "grunt-contrib-jshint":"~0.6.4",
+        "grunt-contrib-watch":"~0.5.3",
+        "grunt":"~0.4.1",
+        "grunt-complexity":"~0.1.3",
+        "grunt-contrib-uglify":"~0.6.0",
+        "grunt-cli":"~0.1.9"
+    }
+}
