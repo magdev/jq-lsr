@@ -3,7 +3,8 @@
 A jQuery-Plugin to perform actions on links to the knights of the stupid german law called "Leistungsschutzrecht 
 für Presseverlage". [Learn more](https://github.com/magdev/leistungsschutzgelderpresser/blob/master/README.md)
 
-
+This plugin uses [this repository](https://github.com/magdev/leistungsschutzgelderpresser) to read the domain-blacklist.
+To use another blacklist set the URL using the _domainlist_ option.
 
 ## Install
 
@@ -76,6 +77,20 @@ $('.container').lsr({
 ```
 
 
+### Perform an action on blacklist updates
+
+Log blacklist updates to the console
+```javascript
+$('a').lsr({
+    onUpdateList: function(data, ts, url, status) {
+        console.log(data);
+        console.log(ts);
+        console.log(url);
+        console.log(status);
+    }
+});
+```
+
 
 ## Options
 
@@ -123,6 +138,7 @@ Download the package, unpack and open [example/usage.html](example/usage.html) f
 
   * Automated tests
   * Apply styles to examples
+  * 
 
 
 
