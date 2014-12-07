@@ -59,6 +59,14 @@
                 if (!$el.hasClass(elementClass)) {
                     $el.addClass(elementClass);
                 }
+            },
+            confirm: function($el, $parent, url, domain) {
+                $el.off('click').on('click', function(ev) {
+                    ev.preventDefault();
+                    if (confirm('The link goes to ' + domain + '! Are you sure you want to follow this link?')) {
+                        window.location = url;
+                    }
+                });
             }
         },
         
@@ -89,7 +97,14 @@
             var lastUpdate = localStorage.getItem('last-update') || null,
                 intervalTime = 0,
                 now = Math.round(Date.now()/1000);
-
+            
+            if (interval === 'off') {
+                if (!localStorage.getItem('domainlist')) {
+                    return true;
+                }
+                return false;
+            }
+            
             if (!localStorage.getItem('domainlist')) {
                 return true;
             }
