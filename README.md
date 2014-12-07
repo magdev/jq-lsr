@@ -96,7 +96,7 @@ $('a').lsr({
 
 ```javascript
 {
-    // Source-URL poiting to a blacklist, will be stored locally
+    // Source-URL pointing to a blacklist, will be stored locally
     domainlist: 'https://cdn.rawgit.com/magdev/leistungsschutzgelderpresser/master/domains.json',
     
     // Update interval, can be off, hourly, daily, weekly, monthly
