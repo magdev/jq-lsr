@@ -2,6 +2,14 @@
 
 A jQuery-Plugin to perform actions on links to the knights of the stupid german law called "Leistungsschutzrecht für Presseverlage". [Learn more](https://github.com/magdev/leistungsschutzgelderpresser)
 
+
+## Install
+
+```bash
+bower install jq-lsr --save
+```
+
+
 ## Usage
 
 ### Basic example
