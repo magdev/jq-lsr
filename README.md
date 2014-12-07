@@ -99,7 +99,7 @@ $('a').lsr({
     // Source-URL pointing to a blacklist, will be stored locally
     domainlist: 'https://cdn.rawgit.com/magdev/leistungsschutzgelderpresser/master/domains.json',
     
-    // Update interval, can be off, hourly, daily, weekly, monthly
+    // Update interval, can be off, hourly, daily, weekly or monthly
     updateInterval: 'weekly',
     
     // Force an update
