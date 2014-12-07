@@ -68,7 +68,7 @@ $('a').lsr();
 
 ## Examples
 
-[see example/usage.html](example/usage.html)
+See [example/usage.html](example/usage.html) for default options and [example/custom.html](example/custom.html)
 
 ## License
 
