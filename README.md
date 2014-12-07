@@ -7,13 +7,9 @@ A jQuery-Plugin to perform actions on links to the knights of the stupid german 
 
 ### Using [bower](http://bower.io)
 
-Install the component
-
 ```bash
 bower install jq-lsr --save
 ```
-
-Add the plugin to the HTML document
 
 ```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -21,8 +17,6 @@ Add the plugin to the HTML document
 ``` 
 
 ### Using [RawGit CDN](https://rawgit.com)
-
-Add the plugin to the HTML document
 
 ```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
