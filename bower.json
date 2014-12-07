@@ -21,7 +21,8 @@
         "node_modules",
         "bower_components",
         "*.md",
-        "example"
+        "example",
+        "Gruntfile.js"
     ],
     "dependencies":{
         "jquery":"~2.x"
