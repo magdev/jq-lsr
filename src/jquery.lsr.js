@@ -89,7 +89,14 @@
             var lastUpdate = localStorage.getItem('last-update') || null,
                 intervalTime = 0,
                 now = Math.round(Date.now()/1000);
-
+            
+            if (interval === 'off') {
+                if (!localStorage.getItem('domainlist')) {
+                    return true;
+                }
+                return false;
+            }
+            
             if (!localStorage.getItem('domainlist')) {
                 return true;
             }
