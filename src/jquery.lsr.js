@@ -83,6 +83,14 @@
         
         
         /**
+         * Check if the URL is a link to a specific domain
+         */
+        match = function(url, domain) {
+            return url.indexOf(domain) !== -1;
+        },
+        
+        
+        /**
          * Filter an element
          * 
          * @param {jQuery} $el
@@ -93,7 +101,7 @@
         filter = function($el, $parent, domain, cb) {
             var url = $el.attr('href');
             if (url) {
-                if (url.indexOf(domain) !== -1) {
+                if (match(url, domain)) {
                     cb($el, $parent, url, domain);
                 }
                 return;
