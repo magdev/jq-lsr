@@ -52,7 +52,7 @@ $('a').lsr();
     // Do something after the list has been updated
     onUpdateList: onUpdateList,
     
-    // Predefined filters, can be unlink, marker, remove
+    // Predefined filters, can be unlink, marker, remove or confirm
     filterMode: 'unlink',
     
     // Apply action to a parent element
