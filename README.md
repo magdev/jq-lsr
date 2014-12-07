@@ -1,3 +1,3 @@
 # jQuery-LSR
 
-_(coming soon)_
+[Examples](examples/usage.html)
