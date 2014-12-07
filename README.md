@@ -5,8 +5,28 @@ A jQuery-Plugin to perform actions on links to the knights of the stupid german 
 
 ## Install
 
+### Using [bower](http://bower.io)
+
+Install the component
+
 ```bash
 bower install jq-lsr --save
+```
+
+Add the plugin to the HTML document
+
+```html
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="path/to/bower_components/jq-lsr/dist/jquery.lsr.min.js"></script>
+``` 
+
+### Using [RawGit CDN](https://rawgit.com)
+
+Add the plugin to the HTML document
+
+```html
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/magdev/jq-lsr/master/dist/jquery.lsr.min.js"></script>
 ```
 
 
@@ -15,7 +35,7 @@ bower install jq-lsr --save
 ### Basic example
 
 ```javascript
-// Apply to all links on the page
+// Apply filter to all links on the page
 $('a').lsr();
 ```
 
@@ -26,7 +46,7 @@ $('a').lsr();
     // Source-URL poiting to a blacklist, will be stored locally
     domainlist: 'https://cdn.rawgit.com/magdev/leistungsschutzgelderpresser/master/domains.json',
     
-    // Update interval, can be hourly, daily, weekly, monthly
+    // Update interval, can be off, hourly, daily, weekly, monthly
     updateInterval: 'weekly',
     
     // Force an update
