@@ -13,7 +13,7 @@ $('a').lsr();
 
 ### Options
 
-```json
+```javascript
 {
     // Source-URL poiting to a blacklist, will be stored locally
     domainlist: 'https://cdn.rawgit.com/magdev/leistungsschutzgelderpresser/master/domains.json',
