@@ -136,6 +136,7 @@ Download the package, unpack and open [example/usage.html](example/usage.html) f
 
 ## To-Do
 
+  * Improve matching of domain names to avoid false positives
   * Automated tests
   * Apply styles to examples
   * I18n
