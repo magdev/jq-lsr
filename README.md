@@ -140,6 +140,7 @@ Download the package, unpack and open [example/usage.html](example/usage.html) f
   * Automated tests
   * Apply styles to examples
   * I18n
+  * Error-Handling
 
 
 
