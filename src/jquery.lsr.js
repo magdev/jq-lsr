@@ -31,6 +31,7 @@
         elementClass = 'lsr-link',
         parentClass = 'lsr-link-parent',
         domainlist = (JSON.parse(localStorage.getItem('domainlist')) || []),
+        lang = {},
         
         
         /**
@@ -41,7 +42,7 @@
                 if ($parent && $parent.length && !$parent.hasClass(parentClass)) {
                     $parent.addClass(parentClass);
                 }
-                var $span = $('<span title="Link removed"></span>').text($el.text());
+                var $span = $('<span title="' + lang.link_removed + '"></span>').text($el.text());
                 $span.addClass(elementClass);
                 $el.replaceWith($span);
             },
@@ -63,7 +64,7 @@
             confirm: function($el, $parent, url, domain) {
                 $el.off('click').on('click', function(ev) {
                     ev.preventDefault();
-                    if (confirm('The link goes to ' + domain + '! Are you sure you want to follow this link?')) {
+                    if (confirm(lang.confirm.replace('##domain##', domain))) {
                         window.location = url;
                     }
                 });
@@ -206,7 +207,11 @@
             filterMode: 'unlink',
             parentSelector: null,
             elementClass: 'lsr-link',
-            parentClass: 'lsr-link-parent'
+            parentClass: 'lsr-link-parent',
+            lang: {
+                link_removed: 'Link removed',
+                confirm: 'The link goes to ##domain##! Are you sure you want to follow this link?'
+            }
         };
     
     
@@ -226,6 +231,7 @@
         filterMode = opts.filterMode;
         elementClass = opts.elementClass;
         parentClass = opts.parentClass;
+        lang = opts.lang;
         
         return this.each(function() {
             var $this = $(this),
