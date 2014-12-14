@@ -121,7 +121,16 @@ $('a').lsr({
     elementClass: 'lsr-link',
     
     // Class to add to parent elements
-    parentClass: 'lsr-link-parent'
+    parentClass: 'lsr-link-parent',
+    
+    // Language specific strings
+    lang: {
+        // Tooltip on unlinked strings
+        link_removed: 'Link removed',
+        
+        // Confirmation message
+        confirm: 'The link goes to ##domain##! Are you sure you want to follow this link?'
+    }
 }
 ```
 
@@ -139,7 +148,6 @@ Download the package, unpack and open [example/usage.html](example/usage.html) f
   * Improve matching of domain names to avoid false positives
   * Automated tests
   * Apply styles to examples
-  * I18n
   * Error-Handling
 
 
