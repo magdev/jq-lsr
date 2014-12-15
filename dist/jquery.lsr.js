@@ -43,7 +43,7 @@
                 if ($parent && $parent.length && !$parent.hasClass(parentClass)) {
                     $parent.addClass(parentClass);
                 }
-                var $span = $('<span title="' + lang.link_removed + '"></span>').text($el.text());
+                var $span = $('<span title="' + replaceVars(lang.link_removed, domain, url) + '"></span>').text($el.text());
                 $span.addClass(elementClass);
                 $el.replaceWith($span);
             },
@@ -65,7 +65,7 @@
             confirm: function($el, $parent, url, domain) {
                 $el.off('click').on('click', function(ev) {
                     ev.preventDefault();
-                    if (confirm(lang.confirm.replace('##domain##', domain).replace('##url##', url))) {
+                    if (confirm(replaceVars(lang.confirm, domain, url))) {
                         window.location = url;
                     }
                 });
@@ -74,12 +74,13 @@
                 var $warning = $('<div></div>');
                 $parent = $parent || $el.closest('div');
                 
-                $warning.addClass(warningClass).text(lang.warning);
-                $parent.not('has-lsr-warning')
-                    .addClass('has-lsr-warning')
+                $warning.addClass(warningClass).text(replaceVars(lang.warning, domain, url));
+                $parent.not('has-' + warningClass)
+                    .addClass('has-' + warningClass)
                     .prepend($warning);
             }
         },
+        
         
         /**
          * Update List Handler
@@ -145,6 +146,19 @@
                 return true;
             }
             return false;
+        },
+        
+        
+        /**
+         * Replace variables in strings
+         * 
+         * @param {String} text
+         * @param {String} domain
+         * @param {String} url
+         * @return {String}
+         */
+        replaceVars = function(text, domain, url) {
+            return text.replace('##domain##', domain).replace('##url##', url);
         },
         
         
