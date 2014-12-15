@@ -74,7 +74,7 @@
                 var $warning = $('<div></div>');
                 $parent = $parent || $el.closest('div');
                 
-                $warning.addClass(warningClass).text(lang.warning);
+                $warning.addClass(warningClass).text(lang.warning.replace('##domain##', domain).replace('##url##', url));
                 $parent.not('has-' + warningClass)
                     .addClass('has-' + warningClass)
                     .prepend($warning);
