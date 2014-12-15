@@ -127,6 +127,7 @@ $('a').lsr({
     warningClass: 'lsr-warning',
     
     // Language specific strings
+    // All strings may contain the placeholders ##domain## and ##url##
     lang: {
         // Tooltip on unlinked strings
         link_removed: 'Link removed',
