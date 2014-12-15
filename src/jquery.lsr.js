@@ -75,8 +75,8 @@
                 $parent = $parent || $el.closest('div');
                 
                 $warning.addClass(warningClass).text(lang.warning);
-                $parent.not('has-lsr-warning')
-                    .addClass('has-lsr-warning')
+                $parent.not('has-' + warningClass)
+                    .addClass('has-' + warningClass)
                     .prepend($warning);
             }
         },
