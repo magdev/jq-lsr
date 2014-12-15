@@ -64,7 +64,7 @@
             confirm: function($el, $parent, url, domain) {
                 $el.off('click').on('click', function(ev) {
                     ev.preventDefault();
-                    if (confirm(lang.confirm.replace('##domain##', domain))) {
+                    if (confirm(lang.confirm.replace('##domain##', domain).replace('##url##', url))) {
                         window.location = url;
                     }
                 });
