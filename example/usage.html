@@ -32,8 +32,14 @@
         }
         
         .lsr-link-parent {
-            border: 1px dotted red;
+            border: 1px dashed red;
             padding: 2px;
+        }
+        .lsr-warning {
+            background-color: #dd4b39;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
         }
         </style>
     </head>
@@ -130,25 +136,6 @@ $('.container6 a').lsr({
                 </div>
                 <p><em>Only one paragraph should be left above</em></p>
             </li>
-            <!--li>
-               <h2>Use a custom modifier function</h2>
-               <code>
-                   <pre>
-$('.container7').lsr({
-    onFilterMatch: function($el, $parent, url, domain) {
-        $el.click(function(ev) {
-            ev.preventDefault();
-            alert('You really shouln\'t read this crap!');
-        });
-    }
-});
-                   </pre>
-               </code>
-                <div class="container container7">
-                   <p>This paragraph contains a link to <a href="http://www.bild.de">Bild.de</a></p>
-                   <p>This is just another paragraph.</p>
-                </div>
-            </li-->
             <li>
                <h2>Confirm the click</h2>
                <code>
@@ -159,6 +146,20 @@ $('.container7').lsr({
                    </pre>
                </code>
                 <div class="container container7">
+                   <p>This paragraph contains a link to <a href="http://www.bild.de">Bild.de</a></p>
+                   <p>This is just another paragraph.</p>
+                </div>
+            </li>
+            <li>
+               <h2>Display a warning</h2>
+               <code>
+                   <pre>
+$('.container8').lsr({
+    filterMode: 'warning'
+});
+                   </pre>
+               </code>
+                <div class="container container8">
                    <p>This paragraph contains a link to <a href="http://www.bild.de">Bild.de</a></p>
                    <p>This is just another paragraph.</p>
                 </div>
@@ -192,6 +193,9 @@ $('.container7').lsr({
         });
         $('.container7').lsr({
             filterMode: 'confirm'
+        });
+        $('.container8').lsr({
+            filterMode: 'warning'
         });
         </script>
     </body>

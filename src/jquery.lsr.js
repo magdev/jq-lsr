@@ -30,6 +30,7 @@
     var filterMode = 'unlink',
         elementClass = 'lsr-link',
         parentClass = 'lsr-link-parent',
+        warningClass = 'lsr-warning',
         domainlist = (JSON.parse(localStorage.getItem('domainlist')) || []),
         lang = {},
         
@@ -68,6 +69,15 @@
                         window.location = url;
                     }
                 });
+            },
+            warning: function($el, $parent, url, domain) {
+                var $warning = $('<div></div>');
+                $parent = $parent || $el.closest('div');
+                
+                $warning.addClass(warningClass).text(lang.warning);
+                $parent.not('has-lsr-warning')
+                    .addClass('has-lsr-warning')
+                    .prepend($warning);
             }
         },
         
@@ -218,8 +228,10 @@
             parentSelector: null,
             elementClass: 'lsr-link',
             parentClass: 'lsr-link-parent',
+            warningClass: 'lsr-warning',
             lang: {
                 link_removed: 'Link removed',
+                warning: 'WARNING! Contains LSR-related Links',
                 confirm: 'The link goes to ##domain##! Are you sure you want to follow this link?'
             }
         };
@@ -241,6 +253,7 @@
         filterMode = opts.filterMode;
         elementClass = opts.elementClass;
         parentClass = opts.parentClass;
+        warningClass = opts.warningClass;
         lang = opts.lang;
         
         return this.each(function() {

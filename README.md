@@ -111,7 +111,7 @@ $('a').lsr({
     // Do something after the list has been updated
     onUpdateList: onUpdateList,
     
-    // Predefined filters, can be unlink, marker, remove or confirm
+    // Predefined filters, can be unlink, marker, warning, remove or confirm
     filterMode: 'unlink',
     
     // Apply action to a parent element
@@ -127,6 +127,9 @@ $('a').lsr({
     lang: {
         // Tooltip on unlinked strings
         link_removed: 'Link removed',
+        
+        // Warning message
+        warning: 'WARNING! Contains LSR-related Links',
         
         // Confirmation message
         confirm: 'The link goes to ##domain##! Are you sure you want to follow this link?'
