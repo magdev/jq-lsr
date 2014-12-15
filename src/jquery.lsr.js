@@ -140,9 +140,19 @@
         
         /**
          * Check if the URL is a link to a specific domain
+         * 
+         * @param {String} url
+         * @param {String} domain
+         * @return {Boolean}
          */
         match = function(url, domain) {
-            return url.indexOf(domain) !== -1;
+            if (url.indexOf('.' + domain) !== -1) {
+                return true;
+            }
+            if (url.indexOf('//' + domain) !== -1) {
+                return true;
+            }
+            return false;
         },
         
         
