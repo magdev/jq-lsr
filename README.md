@@ -123,6 +123,9 @@ $('a').lsr({
     // Class to add to parent elements
     parentClass: 'lsr-link-parent',
     
+    // Class for warning message
+    warningClass: 'lsr-warning',
+    
     // Language specific strings
     lang: {
         // Tooltip on unlinked strings
