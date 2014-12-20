@@ -230,6 +230,7 @@
                 if (debug) {
                     console.log('Invalid filter-mode: ' + filterMode);
                 }
+                return;
             }
             filters[filterMode]($el, $parent, url, domain);
         },
