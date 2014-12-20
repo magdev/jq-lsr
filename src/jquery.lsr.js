@@ -170,10 +170,7 @@
          * @return {Boolean}
          */
         match = function(url, domain) {
-            if (url.indexOf('.' + domain) !== -1) {
-                return true;
-            }
-            if (url.indexOf('//' + domain) !== -1) {
+            if (url.indexOf('.' + domain) !== -1 || url.indexOf('//' + domain) !== -1) {
                 return true;
             }
             return false;
@@ -211,7 +208,11 @@
          * @param {String} url
          * @param {String} status
          */
-        onUpdateList = function(data, ts, url, status) {},
+        onUpdateList = function(data, ts, url, status) {
+            var date = new Date(ts*1000);
+            console.log('Blacklist updated at ' + date.toLocalTime() + ' from ' + url);
+            console.log('List contains actually ' + data.length + ' domains');
+        },
         
         
         /**
