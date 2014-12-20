@@ -172,6 +172,9 @@
          */
         match = function(url, domain) {
             if (url.indexOf('.' + domain) !== -1 || url.indexOf('//' + domain) !== -1) {
+                if (debug) {
+                    console.log('Match found: Domain: ' + domain + ', URL: ' + url);
+                }
                 return true;
             }
             return false;
