@@ -33,6 +33,7 @@
         warningClass = 'lsr-warning',
         domainlist = (JSON.parse(localStorage.getItem('domainlist')) || []),
         lang = {},
+        debug = false,
         
         
         /**
@@ -170,10 +171,7 @@
          * @return {Boolean}
          */
         match = function(url, domain) {
-            if (url.indexOf('.' + domain) !== -1) {
-                return true;
-            }
-            if (url.indexOf('//' + domain) !== -1) {
+            if (url.indexOf('.' + domain) !== -1 || url.indexOf('//' + domain) !== -1) {
                 return true;
             }
             return false;
@@ -211,7 +209,12 @@
          * @param {String} url
          * @param {String} status
          */
-        onUpdateList = function(data, ts, url, status) {},
+        onUpdateList = function(data, ts, url, status) {
+            if (debug) {
+                console.log('Blacklist updated at ' + (new Date(ts*1000)).toLocaleString() + ' from ' + url);
+                console.log('List contains actually ' + data.length + ' domains');
+            }
+        },
         
         
         /**
@@ -223,9 +226,12 @@
          * @param {String} domain
          */
         onFilterMatch = function($el, $parent, url, domain) {
-            if (filters[filterMode]) {
-                filters[filterMode]($el, $parent, url, domain);
+            if (!filters[filterMode]) {
+                if (debug) {
+                    console.log('Invalid filter-mode: ' + filterMode);
+                }
             }
+            filters[filterMode]($el, $parent, url, domain);
         },
         
         
@@ -236,6 +242,7 @@
             domainlist: 'https://cdn.rawgit.com/magdev/leistungsschutzgelderpresser/master/domains.json',
             updateInterval: 'weekly',
             forceUpdate: false,
+            debug: false,
             onFilterMatch: onFilterMatch,
             onUpdateList: onUpdateList,
             filterMode: 'unlink',
@@ -260,15 +267,16 @@
     $.fn.lsr = function(options) {
         var opts = $.extend(defaultOptions, options);
         
-        if (checkUpdates(opts.updateInterval) || opts.forceUpdate) {
-            updateList(opts.domainlist, opts.onUpdateList);
-        }
-        
         filterMode = opts.filterMode;
         elementClass = opts.elementClass;
         parentClass = opts.parentClass;
         warningClass = opts.warningClass;
         lang = opts.lang;
+        debug = opts.debug;
+        
+        if (checkUpdates(opts.updateInterval) || opts.forceUpdate) {
+            updateList(opts.domainlist, opts.onUpdateList);
+        }
         
         return this.each(function() {
             var $this = $(this),
@@ -279,5 +287,11 @@
             });
         });
     };
+    
+    
+    // Apply filter to elements using data-attributes
+    $('[data-filter="lsr"]').each(function() {
+        $(this).lsr(this.dataset);
+    });
     
 })(jQuery);

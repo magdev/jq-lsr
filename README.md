@@ -122,6 +122,9 @@ $('a').lsr({
     // Force an update
     forceUpdate: false,
     
+    // Enable debug-mode
+    debug: false,
+    
     // Handler for matched links
     onFilterMatch: onFilterMatch,
     
