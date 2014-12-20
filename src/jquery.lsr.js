@@ -209,8 +209,7 @@
          * @param {String} status
          */
         onUpdateList = function(data, ts, url, status) {
-            var date = new Date(ts*1000);
-            console.log('Blacklist updated at ' + date.toLocalTime() + ' from ' + url);
+            console.log('Blacklist updated at ' + (new Date(ts*1000)).toLocalTime() + ' from ' + url);
             console.log('List contains actually ' + data.length + ' domains');
         },
         
