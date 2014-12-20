@@ -51,6 +51,15 @@ Unlink all matched links on the page
 $('a').lsr();
 ```
 
+### Using data-* attributes
+
+Unlink all matched links on the page
+```html
+<div data-filter="lsr" data-filter-mode="confirm">
+    <!-- content -->
+</div>
+```
+
 
 ### More advanced examples
 
@@ -163,7 +172,6 @@ Download the package, unpack and open [example/usage.html](example/usage.html) f
   * Automated tests
   * Apply styles to examples
   * Error-Handling
-  * Using data-*-attributes for options and automated checks
 
 
 
