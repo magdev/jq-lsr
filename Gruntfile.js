@@ -72,6 +72,25 @@ module.exports = function(grunt) {
                 }],
             },
         },
+        less: {
+            development: {
+                options: {
+                    compress: false
+                },
+                files: {
+                    'dist/jquery.lsr.css': 'src/jquery.lsr.less'
+                }
+            },
+            production: {
+                options: {
+                    sourceMap: true,
+                    compress: true
+                },
+                files: {
+                    'dist/jquery.lsr.min.css': 'src/jquery.lsr.less'
+                }
+            }
+          }
     });
 
     grunt.loadNpmTasks('grunt-complexity');
@@ -79,5 +98,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.registerTask('default', ['complexity', 'jshint', 'copy', 'uglify']);
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.registerTask('default', ['complexity', 'jshint', 'copy', 'uglify', 'less']);
 };

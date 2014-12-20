@@ -15,6 +15,10 @@ bower install jq-lsr --save
 ```
 
 ```html
+<!-- in <head> -->
+<link href="path/to/bower_components/jq-lsr/dist/jquery.lsr.min.css" rel="stylesheet"/>
+
+<!-- before </body> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="path/to/bower_components/jq-lsr/dist/jquery.lsr.min.js"></script>
 ``` 
@@ -22,6 +26,10 @@ bower install jq-lsr --save
 ### Using [RawGit CDN](https://rawgit.com)
 
 ```html
+<!-- in <head> -->
+<link href="https://cdn.rawgit.com/magdev/jq-lsr/master/jquery.lsr.min.css" rel="stylesheet"/>
+
+<!-- before </body> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdn.rawgit.com/magdev/jq-lsr/master/dist/jquery.lsr.min.js"></script>
 ```
@@ -155,6 +163,7 @@ Download the package, unpack and open [example/usage.html](example/usage.html) f
   * Automated tests
   * Apply styles to examples
   * Error-Handling
+  * Using data-*-attributes for options and automated checks
 
 
 
