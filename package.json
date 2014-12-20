@@ -1,6 +1,6 @@
 {
     "name":"jq-lsr",
-    "version":"0.0.7",
+    "version":"0.0.8",
     "description":"A jQuery-Plugin to perform actions on links to the knights of the stupid german law called \"Leistungsschutzrecht für Presseverlage\".",
     "main":"src/jquery.lsr.js",
     "repository":{
