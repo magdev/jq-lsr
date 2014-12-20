@@ -231,9 +231,9 @@
         onFilterMatch = function($el, $parent, url, domain) {
             if (!filters[filterMode]) {
                 if (debug) {
-                    console.log('Invalid filter-mode: ' + filterMode);
+                    console.log('Invalid filter-mode: ' + filterMode + ', using default (unlink)');
                 }
-                return;
+                filterMode = 'unlink';
             }
             filters[filterMode]($el, $parent, url, domain);
         },
