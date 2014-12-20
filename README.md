@@ -53,7 +53,7 @@ $('a').lsr();
 
 ### Using data-* attributes
 
-Unlink all matched links on the page
+Confirm all matched links in a container
 ```html
 <div data-filter="lsr" data-filter-mode="confirm">
     <!-- content -->
