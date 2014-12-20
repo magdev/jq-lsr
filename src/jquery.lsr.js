@@ -280,4 +280,10 @@
         });
     };
     
+    
+    // Apply filter to elements using data-attributes
+    $('[data-filter="lsr"]').each(function() {
+        $(this).lsr(this.dataset);
+    });
+    
 })(jQuery);
