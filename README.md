@@ -43,6 +43,8 @@ additional actions can be applied to parent elements using the parentSelector op
 target is a container, the parent element is always the container. In the latter case you should be careful 
 with the filterMode remove!
 
+[Fiddle with jq-lsr](http://jsfiddle.net/magdev/r0d6az8x/1/)
+
 
 ### Basic example
 
@@ -122,6 +124,9 @@ $('a').lsr({
     // Force an update
     forceUpdate: false,
     
+    // Enable debug-mode
+    debug: false,
+    
     // Handler for matched links
     onFilterMatch: onFilterMatch,
     
@@ -143,11 +148,17 @@ $('a').lsr({
     // Class for warning message
     warningClass: 'lsr-warning',
     
+    // Class for message on removed content
+    messageClass: 'lsr-message',
+    
     // Language specific strings
     // All strings may contain the placeholders ##domain## and ##url##
     lang: {
         // Tooltip on unlinked strings
         link_removed: 'Link removed',
+        
+        // Message for removed contents, set to null for no message
+        content_removed: 'Content removed',
         
         // Warning message
         warning: 'WARNING! Contains LSR-related Links',
@@ -157,14 +168,6 @@ $('a').lsr({
     }
 }
 ```
-
-
-
-## Examples
-
-Download the package, unpack and open [example/usage.html](example/usage.html) for default options and 
-[example/custom.html](example/custom.html) in a browser.
-
 
 
 ## To-Do

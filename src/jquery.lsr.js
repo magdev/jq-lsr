@@ -31,8 +31,10 @@
         elementClass = 'lsr-link',
         parentClass = 'lsr-link-parent',
         warningClass = 'lsr-warning',
+        messageClass = 'lsr-message',
         domainlist = (JSON.parse(localStorage.getItem('domainlist')) || []),
         lang = {},
+        debug = false,
         
         
         /**
@@ -48,11 +50,16 @@
                 $el.replaceWith($span);
             },
             remove: function($el, $parent, url, domain) {
+                var $message = '';
+                if (lang.content_removed) {
+                    $message = $('<div></div>');
+                    $message.addClass(messageClass).text(replaceVars(lang.content_removed, domain, url));
+                }
                 if ($parent && $parent.length) {
-                    $parent.replaceWith('');
+                    $parent.replaceWith($message);
                     return;
                 }
-                $el.replaceWith('');
+                $el.replaceWith($message);
             },
             marker: function($el, $parent, url, domain) {
                 if ($parent && $parent.length && !$parent.hasClass(parentClass)) {
@@ -73,7 +80,6 @@
             warning: function($el, $parent, url, domain) {
                 var $warning = $('<div></div>');
                 $parent = $parent || $el.closest('div');
-                
                 $warning.addClass(warningClass).text(replaceVars(lang.warning, domain, url));
                 $parent.not('has-' + warningClass)
                     .addClass('has-' + warningClass)
@@ -171,6 +177,9 @@
          */
         match = function(url, domain) {
             if (url.indexOf('.' + domain) !== -1 || url.indexOf('//' + domain) !== -1) {
+                if (debug) {
+                    console.log('Match found: Domain: ' + domain + ', URL: ' + url);
+                }
                 return true;
             }
             return false;
@@ -209,8 +218,10 @@
          * @param {String} status
          */
         onUpdateList = function(data, ts, url, status) {
-            console.log('Blacklist updated at ' + (new Date(ts*1000)).toLocaleString() + ' from ' + url);
-            console.log('List contains actually ' + data.length + ' domains');
+            if (debug) {
+                console.log('Blacklist updated at ' + (new Date(ts*1000)).toLocaleString() + ' from ' + url);
+                console.log('List contains actually ' + data.length + ' domains');
+            }
         },
         
         
@@ -223,9 +234,13 @@
          * @param {String} domain
          */
         onFilterMatch = function($el, $parent, url, domain) {
-            if (filters[filterMode]) {
-                filters[filterMode]($el, $parent, url, domain);
+            if (!filters[filterMode]) {
+                if (debug) {
+                    console.log('Invalid filter-mode: ' + filterMode + ', using default (unlink)');
+                }
+                filterMode = 'unlink';
             }
+            filters[filterMode]($el, $parent, url, domain);
         },
         
         
@@ -236,6 +251,7 @@
             domainlist: 'https://cdn.rawgit.com/magdev/leistungsschutzgelderpresser/master/domains.json',
             updateInterval: 'weekly',
             forceUpdate: false,
+            debug: false,
             onFilterMatch: onFilterMatch,
             onUpdateList: onUpdateList,
             filterMode: 'unlink',
@@ -243,8 +259,10 @@
             elementClass: 'lsr-link',
             parentClass: 'lsr-link-parent',
             warningClass: 'lsr-warning',
+            messageClass: 'lsr-message',
             lang: {
                 link_removed: 'Link removed',
+                content_removed: 'Content removed',
                 warning: 'WARNING! Contains LSR-related Links',
                 confirm: 'The link goes to ##domain##! Are you sure you want to follow this link?'
             }
@@ -260,15 +278,17 @@
     $.fn.lsr = function(options) {
         var opts = $.extend(defaultOptions, options);
         
-        if (checkUpdates(opts.updateInterval) || opts.forceUpdate) {
-            updateList(opts.domainlist, opts.onUpdateList);
-        }
-        
         filterMode = opts.filterMode;
         elementClass = opts.elementClass;
         parentClass = opts.parentClass;
         warningClass = opts.warningClass;
+        messageClass = opts.messageClass;
         lang = opts.lang;
+        debug = opts.debug;
+        
+        if (checkUpdates(opts.updateInterval) || opts.forceUpdate) {
+            updateList(opts.domainlist, opts.onUpdateList);
+        }
         
         return this.each(function() {
             var $this = $(this),

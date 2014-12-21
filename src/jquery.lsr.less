@@ -31,6 +31,8 @@
 @box-padding:           2px;
 @border-width:          1px;
 @border-style:          dashed;
+@message-color:         lightgrey;
+@message-text-color:    darkgrey;
 
 
  
@@ -45,6 +47,7 @@
     border: @border-width @border-style @warning-color;
     padding: @box-padding;
 }
+
 .has-lsr-warning {
     border: @border-width @border-style @warning-color;
     border-top: 0;
@@ -61,4 +64,11 @@
         left: 0;
         width: 100%;
     }
+}
+
+.lsr-message {
+    background-color: @message-color;
+    color: @message-text-color;
+    font-style: italic;
+    padding: @box-padding;
 }
