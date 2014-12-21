@@ -46,3 +46,9 @@
   left: 0;
   width: 100%;
 }
+.lsr-message {
+  background-color: #d3d3d3;
+  color: #a9a9a9;
+  font-style: italic;
+  padding: 2px;
+}

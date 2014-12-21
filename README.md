@@ -146,11 +146,17 @@ $('a').lsr({
     // Class for warning message
     warningClass: 'lsr-warning',
     
+    // Class for message on removed content
+    messageClass: 'lsr-message',
+    
     // Language specific strings
     // All strings may contain the placeholders ##domain## and ##url##
     lang: {
         // Tooltip on unlinked strings
         link_removed: 'Link removed',
+        
+        // Message for removed contents
+        content_removed: 'Content removed',
         
         // Warning message
         warning: 'WARNING! Contains LSR-related Links',

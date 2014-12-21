@@ -31,6 +31,7 @@
         elementClass = 'lsr-link',
         parentClass = 'lsr-link-parent',
         warningClass = 'lsr-warning',
+        messageClass = 'lsr-message',
         domainlist = (JSON.parse(localStorage.getItem('domainlist')) || []),
         lang = {},
         debug = false,
@@ -49,11 +50,13 @@
                 $el.replaceWith($span);
             },
             remove: function($el, $parent, url, domain) {
+                var $message = $('<div></div>');
+                $message.addClass(messageClass).text(replaceVars(lang.content_removed, domain, url));
                 if ($parent && $parent.length) {
-                    $parent.replaceWith('');
+                    $parent.replaceWith($message);
                     return;
                 }
-                $el.replaceWith('');
+                $el.replaceWith($message);
             },
             marker: function($el, $parent, url, domain) {
                 if ($parent && $parent.length && !$parent.hasClass(parentClass)) {
@@ -74,7 +77,6 @@
             warning: function($el, $parent, url, domain) {
                 var $warning = $('<div></div>');
                 $parent = $parent || $el.closest('div');
-                
                 $warning.addClass(warningClass).text(replaceVars(lang.warning, domain, url));
                 $parent.not('has-' + warningClass)
                     .addClass('has-' + warningClass)
@@ -254,8 +256,10 @@
             elementClass: 'lsr-link',
             parentClass: 'lsr-link-parent',
             warningClass: 'lsr-warning',
+            messageClass: 'lsr-message',
             lang: {
                 link_removed: 'Link removed',
+                content_removed: 'Content removed',
                 warning: 'WARNING! Contains LSR-related Links',
                 confirm: 'The link goes to ##domain##! Are you sure you want to follow this link?'
             }
@@ -275,6 +279,7 @@
         elementClass = opts.elementClass;
         parentClass = opts.parentClass;
         warningClass = opts.warningClass;
+        messageClass = opts.messageClass;
         lang = opts.lang;
         debug = opts.debug;
         
