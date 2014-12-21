@@ -50,8 +50,11 @@
                 $el.replaceWith($span);
             },
             remove: function($el, $parent, url, domain) {
-                var $message = $('<div></div>');
-                $message.addClass(messageClass).text(replaceVars(lang.content_removed, domain, url));
+                var $message = '';
+                if (lang.content_removed) {
+                    $message = $('<div></div>');
+                    $message.addClass(messageClass).text(replaceVars(lang.content_removed, domain, url));
+                }
                 if ($parent && $parent.length) {
                     $parent.replaceWith($message);
                     return;
